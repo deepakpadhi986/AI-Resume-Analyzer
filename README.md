@@ -1,4 +1,4 @@
-<p><small>Best View in <a href="https://github.com/settings/appearance">Light Mode</a> (Recommended)</small></p><br/>
+<p><small>Best View in <a href="https://github.com/settings/appearance">Light Mode</a> and Desktop Site (Recommended)</small></p><br/>
 
 ![AI-Resume-Analyzer](https://socialify.git.ci/deepakpadhi986/AI-Resume-Analyzer/image?description=1&descriptionEditable=5th%20Sem%20Final%20Year%20Project%20at%20Kirti%20M%20Doongursee%20College%20(2022%20-%2023)&font=Raleway&language=1&pattern=Plus&theme=Light)
 
@@ -197,6 +197,11 @@ streamlit run App.py
 
 ## Issue While Installation and Set-up 🤧
 Feel Free to <a href="mailto:dnoobnerd@gmail.com?subject=I%20have%20an%20issue%20while%20setup%2Finstalling%20of%20AI%20RESUME%20ANALYZER&body=Name%3A%20-%0D%0A%0D%0ADesignation%3A%20-%0D%0A%0D%0APlease%20describe%20your%20problem%20in%20brief%20with%20attached%20photos%20of%20error">Send mail</a>
+
+## Usage
+- After the setup it will do stuff's automatically
+- You just need to upload a resume and see it's magic
+- Admin userid and password is 123
 
 <!-- Roadmap -->
 ## Roadmap 🛵
