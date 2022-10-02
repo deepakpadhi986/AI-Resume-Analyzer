@@ -9,10 +9,8 @@
     <img src="https://img.shields.io/github/last-commit/deepakpadhi986/AI-Resume-Analyzer" alt="last update" />
     <img src="https://img.shields.io/github/languages/top/deepakpadhi986/AI-Resume-Analyzer?color=red" alt="language" />
     <img src="https://img.shields.io/github/languages/code-size/deepakpadhi986/AI-Resume-Analyzer?color=informational" alt="code size" />
-    <!--<img src="https://visitor-badge.glitch.me/badge?page_id=deepakpadhi986.AI-Resume-Analyzer&left_color=grey&right_color=blueviolet" alt="visitors count" />-->
-    <a href="https://github.com/deepakpadhi986/AI-Resume-Analyzer/blob/master/LICENSE">
-      <img src="https://img.shields.io/github/license/deepakpadhi986/AI-Resume-Analyzer.svg?color=yellow" alt="license" />
-    </a>
+    <img src="https://visitor-badge.glitch.me/badge?page_id=deepakpadhi986.AI-Resume-Analyzer&left_color=grey&right_color=blueviolet" alt="visitors count" />
+    <img src="https://img.shields.io/github/license/deepakpadhi986/AI-Resume-Analyzer.svg?color=yellow" alt="license" />
   </p>
   <!--links-->
   <h4>
