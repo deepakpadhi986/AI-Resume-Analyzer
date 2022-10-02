@@ -20,9 +20,12 @@
     <span> · </span>
     <a href="">Project Report</a>
   </h4>
-  <p>Built with ❤︎ and :coffee: by 
-    <a href="https://dnoobnerd.netlify.app/">Deepak Padhi</a> through 
-    <a href="https://www.linkedin.com/in/mrbriit/">Dr Bright --(Data Scientist)</a>
+  <p>
+    <small>
+      Built with ❤︎ and :coffee: by 
+      <a href="https://dnoobnerd.netlify.app/">Deepak Padhi</a> through 
+      <a href="https://www.linkedin.com/in/mrbriit/">Dr Bright --(Data Scientist)</a>
+     </small>
   </p>
   <small>🚀 A Project Submitted for the partial fulfilment of the degree B.sc CS at 
     <a href="https://kirticollege.edu.in/">Kirti College</a> during academic year 2022-23
