@@ -178,7 +178,7 @@ pip install -r requirements.txt
 After installation is finished create a Database ```cv```
 
 And change user credentials inside ```App.py```
-https://github.com/deepakpadhi986/AI-Resume-Analyzer/blob/709cdc0814b6f6c3dd1199839c2a7e3eda951038/App/App.py#L88
+https://github.com/deepakpadhi986/AI-Resume-Analyzer/blob/17e1cdb207fef62557dc394f4158bda515e541fd/App/App.py#L95
 
 Go to ```venvapp\Lib\site-packages\pyresparser``` folder
 
@@ -196,13 +196,17 @@ streamlit run App.py
 
 ```
 
+## Known Error 🤪
+If ``GeocoderUnavailable`` error comes up then just check your internet connection and network speed
+
 ## Issue While Installation and Set-up 🤧
 Feel Free to <a href="mailto:dnoobnerd@gmail.com?subject=I%20have%20an%20issue%20while%20setup%2Finstalling%20of%20AI%20RESUME%20ANALYZER&body=Name%3A%20-%0D%0A%0D%0ADesignation%3A%20-%0D%0A%0D%0APlease%20describe%20your%20problem%20in%20brief%20with%20attached%20photos%20of%20error">Send mail</a>
 
 ## Usage
 - After the setup it will do stuff's automatically
 - You just need to upload a resume and see it's magic
-- Admin userid and password is 123
+- Try first with my resume uploaded in ``Uploaded_Resumes`` folder
+- Admin userid is ``admin`` and password is ``admin@resume-analyzer``
 
 <!-- Roadmap -->
 ## Roadmap 🛵
@@ -210,7 +214,7 @@ Feel Free to <a href="mailto:dnoobnerd@gmail.com?subject=I%20have%20an%20issue%2
 * [x] Add resume scoring criteria for skills and projects.
 * [x] Added fields and recommendations for web, android, ios, data science.
 * [ ] Add more fields for other roles, and its recommendations respectively. 
-* [ ] Fetch more details from users resume.
+* [x] Fetch more details from users resume.
 * [ ] View individual user details.
 
 ## Contributing 🤘
