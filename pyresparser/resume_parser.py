@@ -1,5 +1,3 @@
-
-
 import os
 import multiprocessing as mp
 import io
@@ -27,13 +25,8 @@ class ResumeParser(object):
             'email': None,
             'mobile_number': None,
             'skills': None,
-            'college_name': None,
             'degree': None,
-            'designation': None,
-            'experience': None,
-            'company_names': None,
             'no_of_pages': None,
-            'total_experience': None,
         }
         self.__resume = resume
         if not isinstance(self.__resume, io.BytesIO):
@@ -62,9 +55,7 @@ class ResumeParser(object):
                     self.__noun_chunks,
                     self.__skills_file
                 )
-        # edu = utils.extract_education(
-        #               [sent.string.strip() for sent in self.__nlp.sents]
-        #       )
+
         entities = utils.extract_entity_sections_grad(self.__text_raw)
 
         # extract name
@@ -82,11 +73,8 @@ class ResumeParser(object):
         # extract skills
         self.__details['skills'] = skills
 
-        # extract college name
-        try:
-            self.__details['college_name'] = entities['College Name']
-        except KeyError:
-            pass
+        # no of pages
+        self.__details['no_of_pages'] = utils.get_number_of_pages(self.__resume)
 
         # extract education Degree
         try:
@@ -94,33 +82,6 @@ class ResumeParser(object):
         except KeyError:
             pass
 
-        # extract designation
-        try:
-            self.__details['designation'] = cust_ent['Designation']
-        except KeyError:
-            pass
-
-        # extract company names
-        try:
-            self.__details['company_names'] = cust_ent['Companies worked at']
-        except KeyError:
-            pass
-
-        try:
-            self.__details['experience'] = entities['experience']
-            try:
-                exp = round(
-                    utils.get_total_experience(entities['experience']) / 12,
-                    2
-                )
-                self.__details['total_experience'] = exp
-            except KeyError:
-                self.__details['total_experience'] = 0
-        except KeyError:
-            self.__details['total_experience'] = 0
-        self.__details['no_of_pages'] = utils.get_number_of_pages(
-                                            self.__resume
-                                        )
         return
 
 
