@@ -173,6 +173,8 @@ cd App
 
 pip install -r requirements.txt
 
+python -m spacy download en_core_web_sm
+
 ```
 
 After installation is finished create a Database ```cv```
