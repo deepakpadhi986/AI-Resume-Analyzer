@@ -202,6 +202,8 @@ streamlit run App.py
 If ``GeocoderUnavailable`` error comes up then just check your internet connection and network speed
 
 ## Issue While Installation and Set-up 🤧
+Check-out installation [Video](https://youtu.be/WFruijLC1Nc)
+
 Feel Free to <a href="mailto:dnoobnerd@gmail.com?subject=I%20have%20an%20issue%20while%20setup%2Finstalling%20of%20AI%20RESUME%20ANALYZER&body=Name%3A%20-%0D%0A%0D%0ADesignation%3A%20-%0D%0A%0D%0APlease%20describe%20your%20problem%20in%20brief%20with%20attached%20photos%20of%20error">Send mail</a>
 
 ## Usage
