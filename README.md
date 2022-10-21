@@ -142,7 +142,7 @@ Using logical programs, it will recommend
 1) Python https://www.python.org/downloads/
 2) MySQL https://www.mysql.com/downloads/
 3) Visual Studio Code **(Prefered Code Editor)** https://code.visualstudio.com/Download
-4) Visual Studio build tools for C++ https://visualstudio.microsoft.com/vs/features/cplusplus/
+4) Visual Studio build tools for C++ https://go.microsoft.com/fwlink/?LinkId=691126
 
 ## Setup & Installation 👀
 
