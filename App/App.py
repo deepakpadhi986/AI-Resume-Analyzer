@@ -223,7 +223,7 @@ def run():
         os_name_ver = platform.system() + " " + platform.release()
         g = geocoder.ip('me')
         latlong = g.latlng
-        geolocator = Nominatim(user_agent="geoapiExercises")
+        geolocator = Nominatim(user_agent="http")
         location = geolocator.reverse(latlong, language='en')
         address = location.raw['address']
         cityy = address.get('city', '')
