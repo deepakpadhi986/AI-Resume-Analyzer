@@ -138,7 +138,7 @@ Using logical programs, it will recommend
 
 ## Requirements 😅
 ### Have these things installed to make your process smooth 
-1) Python https://www.python.org/downloads/
+1) Python (3.9.12) https://www.python.org/downloads/release/python-3912/
 2) MySQL https://www.mysql.com/downloads/
 3) Visual Studio Code **(Prefered Code Editor)** https://code.visualstudio.com/Download
 4) Visual Studio build tools for C++ https://aka.ms/vs/17/release/vs_BuildTools.exe
