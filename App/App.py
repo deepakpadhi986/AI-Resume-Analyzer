@@ -91,9 +91,54 @@ def course_recommender(course_list):
 ###### Database Stuffs ######
 
 
-# sql connector
-connection = pymysql.connect(host='localhost',user='root',password='root@MySQL4admin',db='cv')
-cursor = connection.cursor()
+# sql connector with environment variables and retry logic
+DB_HOST = os.environ.get('DB_HOST', 'localhost')
+DB_USER = os.environ.get('DB_USER', 'root')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', 'root@MySQL4admin')
+DB_NAME = os.environ.get('DB_NAME', 'cv')
+DB_PORT = int(os.environ.get('DB_PORT', 3306))
+
+connection = None
+cursor = None
+for _ in range(15):
+    try:
+        connection = pymysql.connect(
+            host=DB_HOST,
+            user=DB_USER,
+            password=DB_PASSWORD,
+            db=DB_NAME,
+            port=DB_PORT
+        )
+        cursor = connection.cursor()
+        break
+    except pymysql.err.OperationalError as e:
+        if len(e.args) > 0 and e.args[0] == 1049:
+            try:
+                temp_conn = pymysql.connect(
+                    host=DB_HOST,
+                    user=DB_USER,
+                    password=DB_PASSWORD,
+                    port=DB_PORT
+                )
+                temp_cur = temp_conn.cursor()
+                temp_cur.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME};")
+                temp_conn.close()
+                continue
+            except Exception:
+                pass
+        time.sleep(2)
+    except Exception:
+        time.sleep(2)
+
+if connection is None:
+    connection = pymysql.connect(
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        db=DB_NAME,
+        port=DB_PORT
+    )
+    cursor = connection.cursor()
 
 
 # inserting miscellaneous data, fetched results, prediction and recommendation into user_data table
@@ -218,20 +263,36 @@ def run():
         act_mob  = st.text_input('Mobile Number*')
         sec_token = secrets.token_urlsafe(12)
         host_name = socket.gethostname()
-        ip_add = socket.gethostbyname(host_name)
-        dev_user = os.getlogin()
+        try:
+            ip_add = socket.gethostbyname(host_name)
+        except Exception:
+            ip_add = "127.0.0.1"
+
+        try:
+            dev_user = os.getlogin()
+        except Exception:
+            import getpass
+            try:
+                dev_user = getpass.getuser()
+            except Exception:
+                dev_user = os.environ.get('USER', os.environ.get('USERNAME', 'guest'))
+
         os_name_ver = platform.system() + " " + platform.release()
-        g = geocoder.ip('me')
-        latlong = g.latlng
-        geolocator = Nominatim(user_agent="http")
-        location = geolocator.reverse(latlong, language='en')
-        address = location.raw['address']
-        cityy = address.get('city', '')
-        statee = address.get('state', '')
-        countryy = address.get('country', '')  
-        city = cityy
-        state = statee
-        country = countryy
+
+        city, state, country, latlong = '', '', '', ''
+        try:
+            g = geocoder.ip('me')
+            latlong = g.latlng if g else ''
+            if latlong:
+                geolocator = Nominatim(user_agent="ai_resume_analyzer")
+                location = geolocator.reverse(latlong, language='en')
+                if location and 'address' in location.raw:
+                    address = location.raw['address']
+                    city = address.get('city', '')
+                    state = address.get('state', '')
+                    country = address.get('country', '')
+        except Exception:
+            city, state, country, latlong = 'Unknown', 'Unknown', 'Unknown', 'Unknown'
 
 
         # Upload Resume

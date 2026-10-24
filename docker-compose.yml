@@ -1,0 +1,45 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: ai-resume-analyzer-db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root@MySQL4admin}
+      MYSQL_DATABASE: ${DB_NAME:-cv}
+    ports:
+      - "${DB_HOST_PORT:-3307}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD:-root@MySQL4admin}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+
+  app:
+    image: ${APP_IMAGE:-ai-resume-analyzer-app}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-resume-analyzer-app
+    restart: unless-stopped
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=${DB_PASSWORD:-root@MySQL4admin}
+      - DB_NAME=${DB_NAME:-cv}
+      - DB_PORT=3306
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./App/Uploaded_Resumes:/app/App/Uploaded_Resumes
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:
+    driver: local
